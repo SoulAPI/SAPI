@@ -1,0 +1,33 @@
+name: Tag on push
+
+on:
+  push:
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Read version from gradle.properties
+        id: gradle_props
+        run: |
+          VERSION=$(grep "^version" gradle.properties | cut -d'=' -f2 | tr -d '[:space:]')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
+      - name: Create tag if not exists
+        run: |
+          VERSION=${{ steps.gradle_props.outputs.version }}
+
+          if git rev-parse "$VERSION" >/dev/null 2>&1; then
+            echo "Tag already exists"
+          else
+            git config user.name "github-actions"
+            git config user.email "github-actions@github.com"
+            git tag $VERSION
+            git push origin $VERSION
+          fi

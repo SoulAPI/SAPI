@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'io.papermc.paperweight.userdev' version "2.0.0-beta.19"
+}
+
+group = 'com.unfamoussoul'
+version = "${version}"
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    paperweight.foliaDevBundle("${folia_version}")
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+jar {
+    archiveFileName = 'SAPI.jar'
+}
