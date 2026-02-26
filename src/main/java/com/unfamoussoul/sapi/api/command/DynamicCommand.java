@@ -20,9 +20,6 @@ public abstract class DynamicCommand extends Command {
 
     @Override
     public boolean execute(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String @NotNull [] strings) {
-        return executeCommand(commandSender, s, strings);
+        return false;
     }
-
-    protected native boolean executeCommand(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String @NotNull [] strings);
-
 }
