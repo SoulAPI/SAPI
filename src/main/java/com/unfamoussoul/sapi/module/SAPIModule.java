@@ -5,6 +5,9 @@ import com.unfamoussoul.sapi.api.command.DynamicCommand;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Абстрактный класс модуля для расширения функциональности SAPI.
  * Модули загружаются динамически из папки modules.
@@ -12,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 public abstract class SAPIModule {
 
     protected SAPI plugin;
+    protected final List<DynamicCommand> registeredCommands = new ArrayList<>();
 
     protected SAPIModule(SAPI plugin) {}
 
@@ -39,7 +43,7 @@ public abstract class SAPIModule {
 
     protected native void setVersion(int version);
 
-    @Nullable protected native String getKey();
+    @Nullable public native String getKey();
 
-    protected native int getVersion();
+    public native int getVersion();
 }
