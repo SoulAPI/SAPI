@@ -17,7 +17,9 @@ public abstract class SAPIModule {
     protected SAPI plugin;
     protected final List<DynamicCommand> registeredCommands = new ArrayList<>();
 
-    protected SAPIModule(SAPI plugin) {}
+    protected SAPIModule(SAPI plugin) {
+        this.plugin = plugin;
+    }
 
     /**
      * Вызывается при загрузке модуля
