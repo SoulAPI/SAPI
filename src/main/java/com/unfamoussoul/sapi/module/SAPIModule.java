@@ -17,7 +17,7 @@ public abstract class SAPIModule {
     protected SAPI plugin;
     protected final List<DynamicCommand> registeredCommands = new ArrayList<>();
 
-    protected SAPIModule(SAPI plugin) {
+    public SAPIModule(SAPI plugin) {
         this.plugin = plugin;
     }
 
