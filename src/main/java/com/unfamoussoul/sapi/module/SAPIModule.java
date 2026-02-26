@@ -1,5 +1,6 @@
 package com.unfamoussoul.sapi.module;
 
+import com.unfamoussoul.sapi.SAPI;
 import com.unfamoussoul.sapi.api.command.DynamicCommand;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -8,33 +9,37 @@ import org.jetbrains.annotations.Nullable;
  * Абстрактный класс модуля для расширения функциональности SAPI.
  * Модули загружаются динамически из папки modules.
  */
-public interface SAPIModule {
+public abstract class SAPIModule {
+
+    protected SAPI plugin;
+
+    protected SAPIModule(SAPI plugin) {}
 
     /**
      * Вызывается при загрузке модуля
      */
-    void onEnable();
+    public native void onEnable();
 
     /**
      * Вызывается при выгрузке модуля
      */
-    void onDisable();
+    public native void onDisable();
 
     /**
      * Добавляет команду на сервер
      */
-    void addCommand(DynamicCommand @NotNull ... commands);
+    protected native void addCommand(DynamicCommand @NotNull ... commands);
 
     /**
      * Удаляет команду с сервера
      */
-    void removeCommand(DynamicCommand @NotNull ... commands);
+    protected native void removeCommand(DynamicCommand @NotNull ... commands);
 
-    void setKey(@NotNull String key);
+    protected native void setKey(@NotNull String key);
 
-    void setVersion(int version);
+    protected native void setVersion(int version);
 
-    @Nullable String getKey();
+    @Nullable protected native String getKey();
 
-    int getVersion();
+    protected native int getVersion();
 }
