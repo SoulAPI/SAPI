@@ -79,4 +79,6 @@ public abstract class SAPIModule {
     @Nullable public native String getKey();
 
     public native int getVersion();
+
+    public native SAPI getPlugin();
 }
