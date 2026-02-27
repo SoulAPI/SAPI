@@ -70,7 +70,7 @@ public abstract class SAPIModule {
     /**
      * Получить Locale переменную. Обязательно используйте loadLocale(String... languages) перед этим!
      */
-    protected native Locale getLocale();
+    public native Locale getLocale();
 
     protected native void setKey(@NotNull String key);
 
