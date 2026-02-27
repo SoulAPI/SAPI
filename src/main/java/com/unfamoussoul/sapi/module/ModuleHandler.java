@@ -8,20 +8,21 @@ import java.util.Set;
 /**
  * Загрузчик и выгрузчик модулей
  */
-public interface ModuleHandler {
+@SuppressWarnings("unused")
+public abstract class ModuleHandler {
 
-    boolean loadModule(@NotNull String moduleName);
+    public native boolean loadModule(@NotNull String moduleName);
 
-    boolean unloadModule(@NotNull String moduleName);
+    public native boolean unloadModule(@NotNull String moduleName);
 
-    void reloadModules();
+    public native void reloadModules();
 
-    boolean isUnloaded(@NotNull String moduleName);
+    public native boolean isUnloaded(@NotNull String moduleName);
 
-    @Nullable ModuleContainer getLoadedModule(@NotNull String moduleName);
+    @Nullable public native ModuleContainer getLoadedModule(@NotNull String moduleName);
 
-    Set<String> getLoadedModules();
+    public native Set<String> getLoadedModules();
 
-    Set<String> getAvailableModules();
+    public native Set<String> getAvailableModules();
 
 }

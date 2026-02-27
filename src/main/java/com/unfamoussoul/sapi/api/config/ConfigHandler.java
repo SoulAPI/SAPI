@@ -7,20 +7,20 @@ import org.jetbrains.annotations.NotNull;
  * Менеджер конфигурации для модулей
  */
 @SuppressWarnings("unused")
-public interface ConfigHandler {
+public abstract class ConfigHandler {
 
     /**
      * Получить файл конфига
      */
-    @NotNull FileConfiguration getConfig();
+    public native @NotNull FileConfiguration getConfig();
 
     /**
      * Сохранить изменения в файле конфига
      */
-    void saveConfig();
+    public native void saveConfig();
 
     /**
      * Перезагрузить конфиг
      */
-    void reloadConfig();
+    public native void reloadConfig();
 }
