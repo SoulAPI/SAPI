@@ -10,7 +10,12 @@ import java.util.logging.Logger;
 /**
  * Локализация
  */
+@SuppressWarnings("unused")
 public abstract class Locale {
+
+    protected Locale(ClassLoader loader) {
+
+    }
 
     /**
      * Загрузить локализацию
