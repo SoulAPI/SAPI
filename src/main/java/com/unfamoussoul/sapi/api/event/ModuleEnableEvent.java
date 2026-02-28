@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Ивент загрузки модуля
  */
+@SuppressWarnings("unused")
 public class ModuleEnableEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLER_LIST = new HandlerList();

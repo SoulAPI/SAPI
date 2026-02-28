@@ -11,10 +11,10 @@ import java.util.List;
 /**
  * Абстрактный класс для создания команд
  */
+@SuppressWarnings("unused")
 public abstract class DynamicCommand extends Command {
 
-    @SuppressWarnings("Unused")
-    protected DynamicCommand(String name, @NotNull LiteralArgumentBuilder<CommandSourceStack> builderSupplier, String... aliases) {
+    protected DynamicCommand(String name, String... aliases) {
         super(name, "Dynamic module command", "/" + name, List.of(aliases));
     }
 
@@ -22,4 +22,6 @@ public abstract class DynamicCommand extends Command {
     public boolean execute(@NotNull CommandSender commandSender, @NotNull String s, @NotNull String @NotNull [] strings) {
         return false;
     }
+
+    protected native void register(@NotNull LiteralArgumentBuilder<CommandSourceStack> builderSupplier);
 }

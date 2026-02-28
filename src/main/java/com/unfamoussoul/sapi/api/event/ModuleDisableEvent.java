@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Ивент разгрузки модуля
  */
+@SuppressWarnings("unused")
 public class ModuleDisableEvent extends Event {
 
     private static final HandlerList HANDLER_LIST = new HandlerList();
