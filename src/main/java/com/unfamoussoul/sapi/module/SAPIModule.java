@@ -18,7 +18,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public abstract class SAPIModule {
 
-    protected SAPI plugin;
+    protected final SAPI plugin;
 
     protected final List<Listener> registeredListeners = new ArrayList<>();
     protected final List<DynamicCommand> registeredCommands = new ArrayList<>();
@@ -71,6 +71,16 @@ public abstract class SAPIModule {
      * Получить Locale переменную. Обязательно используйте loadLocale(String... languages) перед этим!
      */
     public native Locale getLocale();
+
+    /**
+     * Инициализация persistent полей
+     */
+    protected native void initPersistentFields();
+
+    /**
+     * Сохранение всех persistent полей
+     */
+    public native void savePersistentFields();
 
     protected native void setKey(@NotNull String key);
 
