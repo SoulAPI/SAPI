@@ -5,7 +5,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.logging.Logger;
+import java.util.Map;
 
 /**
  * Локализация
@@ -20,7 +20,7 @@ public abstract class Locale {
     /**
      * Загрузить локализацию
      */
-    public abstract void load(Logger logger, String defaultLanguage, String @NotNull ... languages);
+    public abstract void load(String defaultLanguage, String @NotNull ... languages);
 
     /**
      * Получить локализированный Component по ключу key в стандартной локализации
@@ -36,4 +36,14 @@ public abstract class Locale {
      * Получить локализированный String по ключу key в стандартной локализации
      */
     public abstract @NotNull String messageRaw(@NotNull String key, TagResolver... resolvers);
+
+    /**
+     * Получить локализированный String по ключу key в локализации пользователя
+     */
+    public abstract @NotNull String messageRaw(@NotNull CommandSender sender, @NotNull String key, TagResolver... resolvers);
+
+    /**
+     * Получить загруженные локали
+     */
+    public abstract Map<String, Map<String, String>> getTranslations();
 }
