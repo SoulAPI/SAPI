@@ -1,6 +1,7 @@
 package com.unfamoussoul.sapi.module;
 
 import com.unfamoussoul.sapi.SAPI;
+import com.unfamoussoul.sapi.api.access.SAPIAccess;
 import com.unfamoussoul.sapi.api.command.DynamicCommand;
 import com.unfamoussoul.sapi.api.config.ConfigHandler;
 import com.unfamoussoul.sapi.locale.Locale;
@@ -10,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Абстрактный класс модуля для расширения функциональности SAPI.
@@ -82,6 +84,21 @@ public abstract class SAPIModule {
      */
     public native void savePersistentFields();
 
+    /**
+     * Получить имя модуля
+     */
+    public native String getModuleName();
+
+    /**
+     * Получить логгер модуля. префикс "[SAPI:ИмяМодуля]"
+     */
+    public native Logger getLogger();
+
+    /**
+     * Язык по умолчанию
+     */
+    public native String getDefaultLanguage();
+
     protected native void setKey(@NotNull String key);
 
     protected native void setVersion(int version);
@@ -90,5 +107,5 @@ public abstract class SAPIModule {
 
     public native int getVersion();
 
-    public native SAPI getPlugin();
+    public native SAPIAccess getPlugin();
 }

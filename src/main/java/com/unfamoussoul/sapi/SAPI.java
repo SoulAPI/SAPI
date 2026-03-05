@@ -1,5 +1,6 @@
 package com.unfamoussoul.sapi;
 
+import com.unfamoussoul.sapi.api.access.SAPIAccess;
 import com.unfamoussoul.sapi.module.ModuleHandler;
 import org.bukkit.command.CommandMap;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -8,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * Главный класс SAPI. Отсюда можно использовать JavaPlugin методы
  */
 @SuppressWarnings("unused")
-public abstract class SAPI extends JavaPlugin {
+public abstract class SAPI extends JavaPlugin implements SAPIAccess {
 
     public abstract String getDefaultLanguage();
 
