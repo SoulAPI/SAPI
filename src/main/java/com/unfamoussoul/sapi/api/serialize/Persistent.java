@@ -6,7 +6,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Аннотация для полей, которые должны автоматически сохраняться в .ser файл
+ * Аннотация для полей, которые должны автоматически сохраняться в .ser файл.
+ * Пример:
+ * <pre><code>
+ *     \@Persistent(value = "player_phrases")
+ *     private final Map<UUID, List<String>> playerPhrases = new HashMap<>();
+ * </code></pre>
+ * теперь любое изменение в playerPhrases будет сохраняться в файл plugins/SAPI/data/<имя_Модуля>/player_phrases.ser
  */
 @SuppressWarnings("unused")
 @Retention(RetentionPolicy.RUNTIME)
@@ -17,11 +23,4 @@ public @interface Persistent {
      * Имя файла для сохранения
      */
     String value();
-    
-    /**
-     * Интервал авто-сохранения в тиках.
-     * Стандартно 10 секунд
-     * 0 секунд - отключено
-     */
-    long autoSave() default 200L;
 }

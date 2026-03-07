@@ -23,5 +23,25 @@ public abstract class DynamicCommand extends Command {
         return false;
     }
 
+    /**
+     * Зарегистрировать команду в системе Brigadier. Вызывается при добавлении команды в модуль.
+     * Пример:
+     * <pre><code>
+     *     public TestCommand() {
+     *         super("test");
+     *         register(test());
+     *     }
+     *
+     *     private LiteralArgumentBuilder<CommandSourceStack> test() {
+     *         return Commands.literal("test")
+     *                 .executes(context -> {
+     *                     CommandSender sender = context.getSource().getSender();
+     *                     sender.sendRichMessage(sender.getName());
+     *                     return 1;
+     *                 });
+     *     }
+     * </code></pre>
+     * @param builderSupplier - поставщик билдеров для Brigadier
+     */
     protected native void register(@NotNull LiteralArgumentBuilder<CommandSourceStack> builderSupplier);
 }

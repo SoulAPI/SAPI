@@ -4,6 +4,7 @@ import com.unfamoussoul.sapi.SAPI;
 import com.unfamoussoul.sapi.api.access.SAPIAccess;
 import com.unfamoussoul.sapi.api.command.DynamicCommand;
 import com.unfamoussoul.sapi.api.config.ConfigHandler;
+import com.unfamoussoul.sapi.api.web.WebListener;
 import com.unfamoussoul.sapi.locale.Locale;
 import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
@@ -58,6 +59,18 @@ public abstract class SAPIModule {
      * Удаляет листенер ивентов с сервера
      */
     protected native void removeListener(Listener @NotNull ... listeners);
+
+    /**
+     * Добавляет веб-листенер с сервера
+     * @param listener Веб-листенер для добавления
+     * @param port Порт, на котором будет работать веб-листенер
+     */
+    protected native void addWebListener(WebListener listener, int port);
+
+    /**
+     * Удаляет веб-листенер с сервера
+     */
+    protected native void removeWebListener(WebListener @NotNull ... listeners);
 
     /**
      * Загрузка локализации. После этого вы можете использовать getLocale() для получения локализированого текста
