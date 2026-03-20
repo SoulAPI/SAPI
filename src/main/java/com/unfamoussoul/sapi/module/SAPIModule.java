@@ -1,7 +1,6 @@
 package com.unfamoussoul.sapi.module;
 
 import com.unfamoussoul.sapi.SAPI;
-import com.unfamoussoul.sapi.api.access.SAPIAccess;
 import com.unfamoussoul.sapi.api.command.DynamicCommand;
 import com.unfamoussoul.sapi.api.config.ConfigHandler;
 import com.unfamoussoul.sapi.api.web.WebListener;
@@ -21,13 +20,11 @@ import java.util.logging.Logger;
 @SuppressWarnings("unused")
 public abstract class SAPIModule {
 
-    protected final SAPI plugin;
-
     protected final List<Listener> registeredListeners = new ArrayList<>();
     protected final List<DynamicCommand> registeredCommands = new ArrayList<>();
 
     protected SAPIModule(SAPI plugin) {
-        this.plugin = plugin;
+        //
     }
 
     /**
@@ -120,5 +117,5 @@ public abstract class SAPIModule {
 
     public native int getVersion();
 
-    public native SAPIAccess getPlugin();
+    public native SAPI getPlugin();
 }
