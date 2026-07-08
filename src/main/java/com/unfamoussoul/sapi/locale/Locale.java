@@ -1,6 +1,5 @@
 package com.unfamoussoul.sapi.locale;
 
-import com.unfamoussoul.sapi.SAPI;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.command.CommandSender;
@@ -13,14 +12,6 @@ import java.util.Map;
  */
 @SuppressWarnings("unused")
 public abstract class Locale {
-
-    protected Locale(ClassLoader loader) {
-
-    }
-
-    protected Locale(ClassLoader loader, SAPI plugin, String moduleName) {
-
-    }
 
     /**
      * Загрузить локализацию

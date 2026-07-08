@@ -3,14 +3,13 @@ package com.unfamoussoul.sapi.module;
 import com.unfamoussoul.sapi.SAPI;
 import com.unfamoussoul.sapi.api.command.DynamicCommand;
 import com.unfamoussoul.sapi.api.config.ConfigHandler;
+import com.unfamoussoul.sapi.api.database.DatabaseHandler;
 import com.unfamoussoul.sapi.api.web.WebListener;
 import com.unfamoussoul.sapi.locale.Locale;
 import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -19,9 +18,6 @@ import java.util.logging.Logger;
  */
 @SuppressWarnings("unused")
 public abstract class SAPIModule {
-
-    protected final List<Listener> registeredListeners = new ArrayList<>();
-    protected final List<DynamicCommand> registeredCommands = new ArrayList<>();
 
     protected SAPIModule(SAPI plugin) {
         //
@@ -70,6 +66,18 @@ public abstract class SAPIModule {
     protected native void removeWebListener(WebListener @NotNull ... listeners);
 
     /**
+     * Добавляет обработчик базы данных.
+     * @param handler обработчик базы данных {@link DatabaseHandler}
+     */
+    protected native void addDatabaseHandler(DatabaseHandler handler);
+
+    /**
+     * Убирает обработчик базы данных.
+     * @param handlers обработчики баз данных {@link DatabaseHandler}
+     */
+    protected native void removeDatabaseHandler(DatabaseHandler @NotNull ... handlers);
+
+    /**
      * Загрузка локализации. После этого вы можете использовать getLocale() для получения локализированого текста
      */
     protected native void loadLocale(String defaultLanguage, String... languages);
@@ -109,6 +117,16 @@ public abstract class SAPIModule {
      */
     public native String getDefaultLanguage();
 
+    /**
+     * Получить другой модуль по имени
+     *
+     * @return модуль или null, если модуль не загружен
+     */
+    @Nullable
+    public native SAPIModule getModule(@NotNull String moduleName);
+
+    protected native void setAPI(ModuleAPI moduleAPI);
+
     protected native void setKey(@NotNull String key);
 
     protected native void setVersion(int version);
@@ -116,6 +134,8 @@ public abstract class SAPIModule {
     @Nullable public native String getKey();
 
     public native int getVersion();
+
+    public native ModuleAPI getAPI();
 
     public native SAPI getPlugin();
 }
