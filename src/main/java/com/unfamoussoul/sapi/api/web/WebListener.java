@@ -3,6 +3,7 @@ package com.unfamoussoul.sapi.api.web;
 import io.javalin.Javalin;
 import io.javalin.config.JavalinConfig;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
@@ -18,11 +19,11 @@ public abstract class WebListener {
      * Создать Javalin приложение с конфигурацией
      * @param config конфигурация для Javalin приложения
      */
-    protected native Javalin create(Consumer<JavalinConfig> config);
+    protected native Javalin create(@NotNull Consumer<JavalinConfig> config);
 
     /**
      * Запустить Javalin приложение на указанном порту
-     * @param port порт для прослушивания
+     * @param port порт
      */
     public native void start(int port);
 

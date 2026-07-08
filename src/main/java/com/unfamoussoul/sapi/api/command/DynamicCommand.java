@@ -14,6 +14,11 @@ import java.util.List;
 @SuppressWarnings("unused")
 public abstract class DynamicCommand extends Command {
 
+    /**
+     *
+     * @param name - команда
+     * @param aliases - пока нельзя использовать. Попытка использования alias приведёт к регистрации пустой команды.
+     */
     protected DynamicCommand(String name, String... aliases) {
         super(name, "Dynamic module command", "/" + name, List.of(aliases));
     }
