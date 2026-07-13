@@ -1,9 +1,15 @@
 package com.unfamoussoul.sapi.api.database;
 
 /**
- * Да, мы работаем только с SQLite и PostgreSQL, мне лень.
+ * Типы баз данных:
+ * <p>SQLITE</p>
+ * <p>POSTGRESQL</p>
+ * <p>MYSQL</p>
+ * <p>MARIADB</p>
  */
 public enum DatabaseType {
     SQLITE,
-    POSTGRESQL
+    POSTGRESQL,
+    MYSQL,
+    MARIADB
 }

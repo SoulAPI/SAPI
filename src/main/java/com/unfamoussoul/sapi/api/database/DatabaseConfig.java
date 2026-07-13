@@ -6,8 +6,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Класс конфигурации для работы с базами данных.
  * @param url JDBC строка подключения.
- * @param username в случае с базой данных, которым нужен пользователь для подключения (PostgreSQL).
- * @param password в случае с базой данных, которым нужен пароль для подключения (PostgreSQL).
+ * @param username в случае с базой данных, которым нужен пользователь для подключения (PostgreSQL, MySQL, MariaDB).
+ * @param password в случае с базой данных, которым нужен пароль для подключения (PostgreSQL, MySQL, MariaDB).
  * @param maxPoolSize
  * @param minIdle
  * @param connectionTimeoutMs
@@ -48,5 +48,15 @@ public record DatabaseConfig(
     @Contract("_, _, _ -> new")
     public static @NotNull DatabaseConfig forPostgresql(String url, String user, String password) {
         return new DatabaseConfig(url, user, password, 10, 4, 30_000, 600_000, 1_800_000, DatabaseType.POSTGRESQL);
+    }
+
+    @Contract("_, _, _ -> new")
+    public static @NotNull DatabaseConfig forMysql(String url, String user, String password) {
+        return new DatabaseConfig(url, user, password, 10, 4, 30_000, 600_000, 1_800_000, DatabaseType.MYSQL);
+    }
+
+    @Contract("_, _, _ -> new")
+    public static @NotNull DatabaseConfig forMariadb(String url, String user, String password) {
+        return new DatabaseConfig(url, user, password, 10, 4, 30_000, 600_000, 1_800_000, DatabaseType.MARIADB);
     }
 }
